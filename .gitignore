@@ -1,0 +1,21 @@
+# ---- runtime data (repositories, indexes, registry) --------------------
+data/
+*_repos/
+*.sqlite
+*.sqlite-journal
+
+# ---- python -----------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- editors / os ------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*~
