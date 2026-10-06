@@ -192,7 +192,7 @@ does is scriptable. Shared filter parameters on metric endpoints:
 | `GET /api/repos/<id>/commits` · `/commit/<rev>` | paged history, single commit detail |
 | `GET /api/repos/<id>/authors` · `/identities` · `POST /api/repos/<id>/merges` | author metrics (2.5), identity list, manual identity merging |
 | `GET /api/repos/<id>/search?q=…` | files, dirs and commits |
-| `GET /api/repos/<id>/export.csv?kind=files\|dirs\|authors` | CSV export |
+| `GET /api/repos/<id>/export.csv?kind=files\|dirs\|authors\|commits` | CSV export |
 
 Example:
 

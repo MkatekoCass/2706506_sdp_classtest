@@ -248,7 +248,8 @@ def main() -> int:
     refs = resp.json
     check("refs listed", code == 200 and any(r["name"] == "HEAD"
                                              for r in refs["refs"]))
-    for kind, needle in (("files", "path"), ("dirs", "path"), ("authors", "author")):
+    for kind, needle in (("files", "path"), ("dirs", "path"),
+                         ("authors", "author"), ("commits", "hash")):
         code, resp = get(f"/repos/{rid}/export.csv", kind=kind)
         text = resp.data.decode()
         check(f"export {kind}", code == 200 and needle in text.splitlines()[0]

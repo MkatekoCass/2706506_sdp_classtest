@@ -39,7 +39,7 @@ export async function renderCommits(main, ctx) {
   main.append(filterBar({
     repo, refs: ctx.state.refs, filters, identities,
     commitSet: ctx.state.commitSet, onChange: ctx.setFilters,
-    extra: [el("a", { class: "btn btn-sm", href: api.exportUrl(repo.id, "authors", filters) }, "Export CSV")],
+    extra: [el("a", { class: "btn btn-sm", href: api.exportUrl(repo.id, "commits", filters) }, "Export CSV")],
   }));
   main.append(card);
 

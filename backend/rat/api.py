@@ -557,9 +557,25 @@ def create_api(registry: RepoRegistry, static_root: str | None = None) -> Bluepr
                     _fmt_ts(row["last"]),
                     round(row["churn"] / total_churn, 6),
                 ])
+        elif what == "commits":
+            writer.writerow(["hash", "date", "author", "subject", "added",
+                             "removed", "churn", "growth", "files", "binary"])
+            order = idx.time_order()
+            emitted = 0
+            for cid in order[cs.mask[order]]:
+                if emitted >= MAX_EXPORT_ROWS:
+                    break
+                row = metrics.commit_row(idx, int(cid))
+                writer.writerow([
+                    row["hash"], _fmt_ts(row["ct"]), row["author"],
+                    row["subject"], row["added"], row["removed"],
+                    row["churn"], row["growth"], row["files"],
+                    row["binary"],
+                ])
+                emitted += 1
         else:
             raise ApiError(400, f"unknown export kind '{what}' "
-                                f"(files|dirs|authors)")
+                                f"(files|dirs|authors|commits)")
         return Response(
             buf.getvalue(),
             mimetype="text/csv",
