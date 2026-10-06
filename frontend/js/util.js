@@ -130,7 +130,7 @@ export function copy(text) {
 /** Colour ramp for churn magnitudes (used by treemap and bars). */
 export function ramp(t) {
   t = Math.max(0, Math.min(1, t));
-  const from = [46, 84, 168], to = [122, 164, 255];
+  const from = [55, 48, 163], to = [139, 146, 255];
   const c = from.map((v, i) => Math.round(v + (to[i] - v) * t));
   return `rgb(${c[0]},${c[1]},${c[2]})`;
 }
@@ -138,7 +138,7 @@ export function ramp(t) {
 export function heat(t) {
   t = Math.max(0, Math.min(1, t));
   const alpha = 0.14 + 0.86 * Math.pow(t, 0.6);
-  return `rgba(91, 140, 255, ${alpha.toFixed(3)})`;
+  return `rgba(99, 102, 241, ${alpha.toFixed(3)})`;
 }
 
 /* ------------------------------------------------------------ hash urls */

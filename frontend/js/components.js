@@ -139,7 +139,7 @@ export function pager({ page, pages, total, size, onPage }) {
 }
 
 /** bar + value, used for author leaderboards */
-export function barRow({ label, value, max, colour = "#5b8cff", meta = "", onclick }) {
+export function barRow({ label, value, max, colour = "#6366f1", meta = "", onclick }) {
   const width = max > 0 ? Math.max(1.5, (value / max) * 100) : 0;
   return el("div", {
     class: "bar-row" + (onclick ? " clickable" : ""),

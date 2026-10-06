@@ -107,7 +107,7 @@ export async function renderAuthors(main, ctx) {
         el("td", { class: "num" }, fmtInt(author.churn)),
         el("td", { style: "min-width:140px" },
           el("div", { class: "bar-track", style: "height:14px" },
-            el("div", { class: "bar-fill", style: `width:${Math.max(2, author.churn / maxChurn * 100)}%;background:#5b8cff` })),
+            el("div", { class: "bar-fill", style: `width:${Math.max(2, author.churn / maxChurn * 100)}%;background:#6366f1` })),
           el("span", { class: "dim", style: "font-size:11px" }, fmtPct(author.share))),
         el("td", { class: "num" }, fmtInt(author.files)),
         el("td", { class: "num" }, fmtInt(author.dirs)),

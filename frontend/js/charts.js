@@ -6,13 +6,13 @@
 import { el, fmtCompact, fmtDate, fmtInt, fmtSigned, heat, ramp } from "./util.js";
 
 const C = {
-  added: "#4ade80",
-  removed: "#f87171",
-  churn: "#5b8cff",
-  cumulative: "#a78bfa",
+  added: "#34d399",
+  removed: "#fb7185",
+  churn: "#6366f1",
+  cumulative: "#22d3ee",
   commits: "#fbbf24",
-  text: "#8fa0c0",
-  line: "#1a2334",
+  text: "#95a5c8",
+  line: "#1e2942",
 };
 
 const NS = "http://www.w3.org/2000/svg";
@@ -116,7 +116,7 @@ export function timelineChart(container, data, opts = {}) {
       g.append(label);
     }
     // zero line
-    g.append(svgNode("line", { x1: 0, x2: plotW, y1: yLeft(0), y2: yLeft(0), stroke: "#2c3a58" }));
+    g.append(svgNode("line", { x1: 0, x2: plotW, y1: yLeft(0), y2: yLeft(0), stroke: "#33426e" }));
 
     const barW = Math.max(1, Math.min(14, plotW / points.length - 1));
 
@@ -162,7 +162,7 @@ export function timelineChart(container, data, opts = {}) {
     }
 
     // hover: nearest bucket + crosshair
-    const hover = svgNode("line", { y1: 0, y2: plotH, stroke: "#40507a", "stroke-dasharray": "2 3", opacity: 0 });
+    const hover = svgNode("line", { y1: 0, y2: plotH, stroke: "#586cad", "stroke-dasharray": "2 3", opacity: 0 });
     g.append(hover);
     const hit = svgNode("rect", { x: 0, y: 0, width: plotW, height: plotH, fill: "transparent" });
     g.append(hit);
@@ -309,7 +309,7 @@ function drawMonths(container, cells, originDay, values, max, width, tip, metric
     list.forEach((value, month) => {
       const rect = svgNode("rect", {
         x: 44 + month * cellW, y: 16 + row * cellH, width: cellW - 2, height: cellH - 2, rx: 2,
-        fill: heat(value / (rowMax[year] || 1)), stroke: "#0c111c",
+        fill: heat(value / (rowMax[year] || 1)), stroke: "#0a0f1f",
       });
       rect.addEventListener("mousemove", (event) => tip.show(event,
         `<div class="t-head">${year}-${String(month + 1).padStart(2, "0")}</div>
@@ -430,8 +430,8 @@ export function treemapChart(container, tree, opts = {}) {
    Donut (author ownership ω).
    items = [{label, value, share, id}] colour assigned from a palette.
    ====================================================================== */
-const PALETTE = ["#5b8cff", "#a78bfa", "#4ade80", "#fbbf24", "#f87171", "#22d3ee",
-                 "#f472b6", "#94a3b8", "#fb923c", "#34d399", "#818cf8", "#e879f9"];
+const PALETTE = ["#6366f1", "#22d3ee", "#34d399", "#fbbf24", "#fb7185", "#a78bfa",
+                 "#38bdf8", "#f472b6", "#fb923c", "#2dd4bf", "#818cf8", "#e879f9"];
 
 export function donutChart(container, items, opts = {}) {
   container.classList.add("chart");
@@ -502,9 +502,9 @@ export function sparkChart(container, points, opts = {}) {
       + `L${x(t1)},${height / 2}L${x(t0)},${height / 2}Z`;
     const areaRem = data.map((p, i) => `${i ? "L" : "M"}${x(p[0])},${yRem(p[2])}`).join("")
       + `L${x(t1)},${height / 2}L${x(t0)},${height / 2}Z`;
-    svg.append(svgNode("path", { d: areaAdd, fill: "#4ade8030", stroke: C.added, "stroke-width": 1 }));
-    svg.append(svgNode("path", { d: areaRem, fill: "#f8717130", stroke: C.removed, "stroke-width": 1 }));
-    svg.append(svgNode("line", { x1: 0, x2: width, y1: height / 2, y2: height / 2, stroke: "#2c3a58" }));
+    svg.append(svgNode("path", { d: areaAdd, fill: "#34d39930", stroke: C.added, "stroke-width": 1 }));
+    svg.append(svgNode("path", { d: areaRem, fill: "#fb718530", stroke: C.removed, "stroke-width": 1 }));
+    svg.append(svgNode("line", { x1: 0, x2: width, y1: height / 2, y2: height / 2, stroke: "#33426e" }));
     // invisible hover strip
     const hit = svgNode("rect", { x: 0, y: 0, width, height, fill: "transparent" });
     hit.addEventListener("mousemove", (event) => {
